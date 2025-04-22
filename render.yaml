@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: my-nestjs-project
+    env: node
+    buildCommand: yarn install && yarn build
+    startCommand: yarn start:prod
+    envVars:
+      - key: NODE_ENV
+        value: production
+    healthCheckPath: /
+    autoDeploy: true
+    buildCache:
+      paths:
+        - node_modules
+        - dist
+    plan: free  # or choose a paid plan if needed
+    scaling:
+      minInstances: 1
+      maxInstances: 1 
