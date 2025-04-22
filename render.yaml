@@ -9,7 +9,7 @@ services:
         value: production
     healthCheckPath: /
     autoDeploy: true
-    plan: free  # or choose a paid plan if needed
+    plan: free
     scaling:
       minInstances: 1
       maxInstances: 1 
