@@ -33,7 +33,7 @@ export const databaseConfig = registerAs(
       url: url || 'postgresql://postgres:postgres@localhost:5432/my_nestjs_db',
       type: 'postgres',
       entities: [User],
-      synchronize: !isProduction,
+      synchronize: true,
       ssl: isProduction ? { rejectUnauthorized: false } : false,
     };
   },
