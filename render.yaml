@@ -7,6 +7,17 @@ services:
     envVars:
       - key: NODE_ENV
         value: production
+      - key: DATABASE_URL
+        fromDatabase:
+          name: my-nestjs-db
+          property: connectionString
     healthCheckPath: /
     autoDeploy: true
     plan: free
+
+  - type: postgres
+    name: my-nestjs-db
+    plan: free
+    databaseName: my_nestjs_db
+    user: my_nestjs_user
+    ipAllowList: []
