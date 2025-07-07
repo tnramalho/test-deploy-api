@@ -96,3 +96,61 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 ## License
 
 Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+
+
+## Explanation
+
+### Architecture Overview
+
+The Rockets SDK follows a modular, layered architecture designed for
+enterprise applications:
+
+```mermaid
+graph TB
+    subgraph "Application Layer"
+        A[Controllers]
+        B[DTOs]
+        C[Swagger Docs]
+    end
+    
+    subgraph "Service Layer"
+        D[Auth Services]
+        E[User Services]
+        F[OTP Services]
+    end
+    
+    subgraph "Integration Layer"
+        G[JWT Module]
+        H[Email Module]
+        I[Password Module]
+    end
+    
+    subgraph "Data Layer"
+        J[TypeORM Integration]
+        K[SQLite Entities]
+        L[Adapters<br/>Custom DBs]
+    end
+    
+    A --> D
+    B --> D
+    B --> E
+    B --> F
+    C --> D
+    C --> E
+    C --> F
+    
+    D --> G
+    D --> H
+    E --> G
+    E --> H
+    E --> I
+    F --> G
+    F --> H
+    
+    G --> J
+    H --> J
+    I --> J
+    J --> K
+    J --> L
+```
+
